@@ -22,10 +22,8 @@ worker.creation()
 worker = Human("Dave", 35)
 worker.creation()
 
-print(len(Company))
-
 #calculations
-def Calculate(Company):
+def Calculate():
     AvgAge = 0
     Oldest = ""
     Youngest = ""
@@ -41,6 +39,7 @@ def Calculate(Company):
                 Oldest = item
 
     for item in Company:
+        print(item.name)
         if Youngest == "":
             Youngest = item
         else:
@@ -51,10 +50,41 @@ def Calculate(Company):
     print("Youngest: " + str(Youngest.age))
     print("Average: " + str(AvgAge))
     print("Oldest: " + str(Oldest.age))
-    
-Calculate(Company)
+    interface()
 
 
 def interface():
     print("Welcome to the company database.")
-    
+    print("What would you like to do? (enter corresponding number)")
+    print("1. list all current members")
+    print("2. add a member")
+    print("3. remove a member")
+    answer = input()
+    if answer == "1":
+        Calculate()
+    if answer == "2":
+        addMember()
+    if answer == "3":
+        removeMember()
+
+def addMember():
+    print("You have chosen to add a member")
+    Name = input("Please enter the Employees Name\n")
+    Age = int(input("Please enter the employees age\n"))
+    print("Adding to employee directory...")
+    worker = Human(Name, Age)
+    Company.append(worker)
+    print("Employee added!")
+    interface()
+
+def removeMember():
+    print("You have chosen to remove a member")
+    Name = input("Please enter the name of the person you want to fire:\n")
+    for item in Company:
+        if item.name == Name:
+            Company.remove(item)
+    interface()
+
+
+
+interface()
