@@ -28,6 +28,7 @@ def Calculate():
     Oldest = ""
     Youngest = ""
 
+    #comparisons
     for item in Company:
         AvgAge = AvgAge + item.age
 
@@ -46,13 +47,14 @@ def Calculate():
             if item.age < Youngest.age:
                 Youngest = item
 
+    #calculation and value printing
     AvgAge = AvgAge / len(Company)
     print("Youngest: " + str(Youngest.age))
     print("Average: " + str(AvgAge))
     print("Oldest: " + str(Oldest.age))
     interface()
 
-
+# main menu code
 def interface():
     print("Welcome to the company database.")
     print("What would you like to do? (enter corresponding number)")
@@ -67,6 +69,7 @@ def interface():
     if answer == "3":
         removeMember()
 
+#code to add a member
 def addMember():
     print("You have chosen to add a member")
     Name = input("Please enter the Employees Name\n")
@@ -77,6 +80,7 @@ def addMember():
     print("Employee added!")
     interface()
 
+#code to remove a member
 def removeMember():
     print("You have chosen to remove a member")
     Name = input("Please enter the name of the person you want to fire:\n")
